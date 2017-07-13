@@ -1,8 +1,10 @@
 peoples = [("wjj", "boy", 36), ("wrj", "girlwj", 8)]
 
-# 打印元组
+
+"""打印元组"""
 for people in peoples:
     print("%s, %s %d" % people)
+
 
 """打印对齐表格
 name       | sex   | age
