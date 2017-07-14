@@ -16,7 +16,6 @@ class Window(QWidget):
         layout.addWidget(self.edit_hello)
         layout.addWidget(self.btn_press)
         self.setLayout(layout)
-        self.show()
 
     def btn_press_clicked(self):
         QMessageBox.information(self, "HI", "Press me!")
@@ -24,4 +23,5 @@ class Window(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     win = Window()
-    sys.exit(app.exec_())
+    win.show()
+    app.exec_()
