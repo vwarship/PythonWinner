@@ -1,5 +1,7 @@
 import numpy as np
 import operator
+import matplotlib
+import matplotlib.pyplot as plt
 
 
 def classify(x, dataset, labels, k):
@@ -35,6 +37,24 @@ def classify(x, dataset, labels, k):
                                 reverse=True)
     return sorted_label_count[0][0]
 
+
+def draw_scatter_plots(x, y, lables):
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(x, y, 15.0*np.array(lables), 15.0*np.array(lables))
+    plt.show()
+
+
+def auto_norm(dataset):
+    """newValue = (oldValue-min)/(max-min)"""
+    min_vals = dataset.min(0)
+    max_vals = dataset.max(0)
+
+    ranges = max_vals - min_vals
+    m = dataset.shape[0]
+    norm_dataset = dataset - np.tile(min_vals, (m, 1))
+    norm_dataset /= np.tile(ranges, (m, 1))
+    return norm_dataset, ranges, min_vals
 
 dataset = np.array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
 labels = ['A', 'A', 'B', 'B']
