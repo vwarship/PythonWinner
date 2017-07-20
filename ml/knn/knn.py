@@ -56,9 +56,11 @@ def auto_norm(dataset):
     norm_dataset /= np.tile(ranges, (m, 1))
     return norm_dataset, ranges, min_vals
 
-dataset = np.array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
-labels = ['A', 'A', 'B', 'B']
-k = 3
-x = [0,0]
-y = classify(x, dataset, labels, k)
-print(y)    # B
+
+def test():
+    dataset = np.array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
+    labels = ['A', 'A', 'B', 'B']
+    k = 3
+    x = [0,0]
+    y = classify(x, dataset, labels, k)
+    print(y)    # B
