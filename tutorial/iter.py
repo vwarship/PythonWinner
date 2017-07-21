@@ -50,7 +50,7 @@ class Sentence2Iterator(object):
         return self
 
 
-"""第三版 采用生成器的方式实现迭代器"""
+"""第三版 采用生成器表达式的方式实现迭代器"""
 class Sentence3(object):
     def __init__(self, text):
         self.text = text
@@ -80,6 +80,18 @@ class Sentence4(object):
         return '{}({})'.format(self.__class__.__name__, reprlib.repr(self.text))
 
 
+"""第五版 单词按需迭代"""
+class Sentence5(object):
+    def __init__(self, text):
+        self.text = text
+
+    def __iter__(self):
+        return (match.group() for match in re.compile('\w+').finditer(self.text))
+
+    def __repr__(self):
+        return '{}({})'.format(self.__class__.__name__, reprlib.repr(self.text))
+
+
 def test_iter(sentence):
     print(iter(sentence))
     print(list(sentence))
@@ -90,3 +102,4 @@ test_iter(Sentence(text))
 test_iter(Sentence2(text))
 test_iter(Sentence3(text))
 test_iter(Sentence4(text))
+test_iter(Sentence5(text))
