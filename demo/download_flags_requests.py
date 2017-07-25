@@ -13,8 +13,7 @@ DOWNLOAD_DIR = 'downloads/'
 
 
 def print_progress(cc):
-    print(cc, end=' ')  # 使用空格作为间隔
-    sys.stdout.flush()  # python中只有换行才立即输出到控制台
+    print(cc, end=' ', flush=True)  # 使用空格作为间隔，python中默认换行才立即输出到控制台，所以这里flush设置True，立即输出到控制台。
 
 
 def download_flag(url, filename):
