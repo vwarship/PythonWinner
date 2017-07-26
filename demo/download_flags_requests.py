@@ -1,5 +1,4 @@
 import os
-import sys
 import time
 import urllib.request
 
@@ -24,13 +23,19 @@ def download_flag(url, filename):
         f.write(img)
 
 
+def download_flag_cc(cc):
+    cc = cc.lower()
+    url = '{}{cc}/{cc}.gif'.format(BASE_URL, cc=cc)
+    filename = '{}.gif'.format(cc)
+    download_flag(url, filename)
+    print_progress(cc)
+
+
 def download_flags(country_codes):
     for cc in country_codes:
-        cc = cc.lower()
-        url = '{}{cc}/{cc}.gif'.format(BASE_URL, cc=cc)
-        filename = '{}.gif'.format(cc)
-        print_progress(cc)
-        download_flag(url, filename)
+        download_flag_cc(cc)
+
+    return len(COUNTRY_CODES)
 
 
 def main(download_flags):
@@ -38,10 +43,10 @@ def main(download_flags):
         os.mkdir(DOWNLOAD_DIR)
 
     begin_time = time.time()
-    download_flags(COUNTRY_CODES)
+    res = download_flags(COUNTRY_CODES)
     end_time = time.time()
 
-    print('{} flags downloaded in {:.2f}s'.format(len(COUNTRY_CODES), end_time-begin_time))
+    print('{} flags downloaded in {:.2f}s'.format(res, end_time-begin_time))
 
 if __name__ == '__main__':
     main(download_flags)
