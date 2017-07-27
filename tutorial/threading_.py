@@ -1,12 +1,13 @@
 from threading import Thread, Lock
+import select
 
 from winner.utils.time_util import used_time
 
 
 """
 Python 受GIL的限制，一次只能运行一个线程，所以做CPU密集计算时，多线程的效率反而下降（线程之间切换）。
-run no_thread() used time 0.978
-run multi_thread() used time 1.078
+run no_thread_with_cpu() used time 1.027218
+run multi_thread_with_cpu() used time 1.065897
 """
 def factorize(number):
     """因式分解算法"""
@@ -18,7 +19,7 @@ def factorize(number):
 numbers = [3139079, 2214759, 2516637, 2852285]
 
 
-def no_thread():
+def no_thread_with_cpu():
     for number in numbers:
         list(factorize(number))
 
@@ -32,7 +33,7 @@ class FactorizeThread(Thread):
         self.factors = list(factorize(self.number))
 
 
-def multi_thread():
+def multi_thread_with_cpu():
     threads = []
     for number in numbers:
         thread = FactorizeThread(number)
@@ -42,8 +43,36 @@ def multi_thread():
     for thread in threads:
         thread.join()
 
-used_time(no_thread)
-used_time(multi_thread)
+used_time(no_thread_with_cpu)
+used_time(multi_thread_with_cpu)
+
+
+"""
+Python 多线程处理阻塞式I/O操作
+run no_thread_with_io() used time 0.514095
+run multi_thread_with_io() used time 0.104648
+"""
+def slow_system_call():
+    select.select([], [], [], 0.1)
+
+
+def no_thread_with_io():
+    for _ in range(5):
+        slow_system_call()
+
+
+def multi_thread_with_io():
+    threads = []
+    for _ in range(5):
+        thread = Thread(target=slow_system_call)
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+used_time(no_thread_with_io)
+used_time(multi_thread_with_io)
 
 
 """
