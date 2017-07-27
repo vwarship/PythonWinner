@@ -10,19 +10,19 @@ def logn(n):
     return n ** 2
 
 
-def test_thread():
-    executor = ThreadPoolExecutor(8)
-    results = executor.map(logn, nums)
-    print("\nresults", list(results))
-
-
-def test():
+def no_thread():
     results = []
     for n in nums:
         r = logn(n)
         results.append(r)
 
     print("\nresults", results)
+
+
+def multi_thread():
+    executor = ThreadPoolExecutor(8)
+    results = executor.map(logn, nums)
+    print("\nresults", list(results))
 
 
 """
@@ -39,7 +39,7 @@ random_seed = 1
 nums = range(20)
 
 random.seed(random_seed)
-used_time(test)
+used_time(no_thread)
 
 random.seed(random_seed)
-used_time(test_thread)
+used_time(multi_thread)
