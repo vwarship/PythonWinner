@@ -1,6 +1,7 @@
 import random
-from time import sleep, time
 from concurrent.futures import ThreadPoolExecutor
+
+from winner.utils.time_util import used_time
 
 
 def logn(n):
@@ -22,13 +23,6 @@ def test():
         results.append(r)
 
     print("\nresults", results)
-
-
-def used_time(f):
-    begin_time = time()
-    f()
-    end_time = time()
-    print('function %s() used time: %f' % (f.__name__, end_time-begin_time))
 
 
 """

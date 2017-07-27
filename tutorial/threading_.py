@@ -1,5 +1,6 @@
 from threading import Thread, Lock
-from time import time
+
+from winner.utils.time_util import used_time
 
 
 """
@@ -12,13 +13,6 @@ def factorize(number):
     for i in range(1, number+1):
         if number % i == 0:
             yield i
-
-
-def used_time(func):
-    start = time()
-    func()
-    end = time()
-    print('run %s() used time %.3f' % (func.__name__, end-start))
 
 
 numbers = [3139079, 2214759, 2516637, 2852285]
