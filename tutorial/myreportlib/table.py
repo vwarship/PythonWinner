@@ -11,6 +11,8 @@ data = [['00', '01', '02', '03', '04'],
 table = Table(data, colWidths=inch, rowHeights=inch,
               style=[('GRID', (0, 0), (-1, -1), 0.5, colors.grey),  # 画网格的线
                      ('INNERGRID', (2, 0), (-1, 1), 1, colors.green),  # 画网格里的线
+                     ('ALIGN', (0, 0), (0, -1), 'CENTER'),
+                     ('VALIGN', (0, 0), (0, -1), 'MIDDLE'),
                      ('BOX', (0, 0), (1, -1), 2, colors.red),   # 画外框的线
                      ('BOX', (2, 0), (-1, -1), 2, colors.black),
                      ('LINEABOVE', (1, 2), (-2, 2), 1, colors.blue),    # 上面画线
