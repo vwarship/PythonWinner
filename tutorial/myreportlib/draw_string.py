@@ -1,6 +1,6 @@
-from tutorial.myreportlib import *
-
 from reportlab.pdfgen import canvas
+
+from tutorial.myreportlib import *
 
 
 c = canvas.Canvas(pdf_filename)
