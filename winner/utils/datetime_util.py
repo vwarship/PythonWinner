@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 
 def get_days(begin_date, end_date):
@@ -8,5 +8,9 @@ def get_days(begin_date, end_date):
 
 def to_datetime(date):
     """日期转时间 date ==> datetime"""
-    return datetime.datetime(date.year, date.month, date.day)
+    return datetime(date.year, date.month, date.day)
 
+
+def get_current_date_str():
+    dt = datetime.now()
+    return dt.strftime('%Y-%m-%d')
