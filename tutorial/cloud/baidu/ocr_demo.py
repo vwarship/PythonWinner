@@ -59,7 +59,7 @@ options = {
 {'words': '程'}, {'words': '方开户行及账号:中国银行厦门市分行424760961634'}, {'words': '冫王'}, {'words': '收款人'},
 {'words': '复核'}, {'words': '开票人:王小蓉'}, {'words': '销售方:(章)'}, {'words': '2'}]}
 """
-img = get_file_content('/Users/wjj/GitHub/PythonWinner/cloud/images/fapiao1.jpg')
+img = get_file_content('../images/fapiao1.jpg')
 result = aipOcr.basicGeneral(img, options)
 print(result)
 
