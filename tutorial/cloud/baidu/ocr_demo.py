@@ -29,6 +29,7 @@ options = {
 }
 
 """调用通用文字识别接口
+Python SDK OCR的BUG [识别本地图片出错] https://developer.baidu.com/forum/topic/show?topicId=241904
 测试本地文件失败，方法是修改aip里的ocr.py函数_validate，替换掉下面的代码
         # 支持url
         if re.match(r'^\w{1,128}://', data['image']):
