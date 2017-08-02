@@ -11,3 +11,19 @@
 .idea/workspace.xml___jb_tmp___
 
 *.pyc
+
+demo/downloads/
+
+demo/test.pdf
+
+tutorial/test.pdf
+
+tutorial/myreportlib/test.pdf
+
+demo/img1.jpg
+
+demo/img2.jpg
+
+tutorial/cloud/baidu/key.conf
+
+tutorial/opencv/test.jpg
