@@ -1,7 +1,8 @@
 import cv2
 
+from tutorial.opencv import fapiao
 
-img = cv2.imread('images/fapiao1.jpg', 0)
+img = cv2.imread(fapiao, 0)
 x = cv2.Sobel(img, cv2.CV_16S, 1, 0)
 y = cv2.Sobel(img, cv2.CV_16S, 0, 1)
 
