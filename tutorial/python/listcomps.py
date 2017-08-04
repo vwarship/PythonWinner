@@ -40,3 +40,14 @@ dd = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60, 7: 70, 8: 80, 9: 90}
 ll = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 dd = dict([(n, n*10) for n in ll])
 
+
+"""构建字典
+dd = {'a': 'A', 'b': 'B', 'c': 'C', 'd': 'D', 'e': 'E', 'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J', 'k': 'K', 'l': 'L', 'm': 'M', 'n': 'N', 'o': 'O', 'p': 'P', 'q': 'Q', 'r': 'R', 's': 'S', 't': 'T', 'u': 'U', 'v': 'V', 'w': 'W', 'x': 'X', 'y': 'Y', 'z': 'Z'}
+"""
+dd = {char:char.upper() for char in 'abcdefghijklmnopqrstuvwxyz'}
+
+
+"""构建集合
+ss = {'I', 'Z', 'D', 'O', 'M', 'A', 'K', 'W', 'Q', 'H', 'S', 'V', 'C', 'B', 'Y', 'T', 'G', 'J', 'P', 'N', 'L', 'X', 'F', 'R', 'U', 'E'}
+"""
+ss = {char.upper() for char in 'abcdefghijklmnopqrstuvwxyz'}
