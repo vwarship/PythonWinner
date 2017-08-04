@@ -1,26 +1,15 @@
-import configparser
-
 from aip import AipOcr
+from tutorial.cloud.baidu import get_key_values
 
-
-config = configparser.ConfigParser()
-config.read('key.conf')
-
-APP_ID = config['ocr_demo']['APP_ID']
-API_KEY = config['ocr_demo']['API_KEY']
-SECRET_KEY = config['ocr_demo']['SECRET_KEY']
 
 # 初始化ApiOcr对象
-aipOcr = AipOcr(APP_ID, API_KEY, SECRET_KEY)
+aipOcr = AipOcr(*get_key_values('ocr_demo'))
 
 
 # 读取图片
 def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
-
-# 初始化ApiOcr对象
-aipOcr = AipOcr(APP_ID, API_KEY, SECRET_KEY)
 
 # 定义参数变量
 options = {
