@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def draw_scatter_plots():
+def draw_scatter_plot():
     """绘制散点图"""
     data_mat = np.array(
         [[7.29170000e+04, 7.10627300e+00, 2.23600000e-01],
@@ -15,3 +15,5 @@ def draw_scatter_plots():
     ax = fig.add_subplot(111)
     ax.scatter(data_mat[:, 1], data_mat[:, 2])
     plt.show()
+
+draw_scatter_plot()
