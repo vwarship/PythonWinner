@@ -1,4 +1,5 @@
 from math import log
+import operator
 
 
 def calc_shannon_entropy(dataset):
@@ -65,3 +66,41 @@ def choose_best_feature_index(dataset):
             best_feature_index = i
 
     return best_feature_index
+
+
+def majority(classes):
+    class_count = {}
+    for c in classes:
+        class_count.setdefault(c, 0)
+        class_count[c] += 1
+
+    sorted_class_count = sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_class_count[0][0]
+
+
+def create_tree(dataset, labels):
+    classes = [data[-1] for data in dataset]
+
+    # 类别完全相同则停止划分
+    if len(set(classes)) == 1:
+        return classes[0]
+
+    # 遍历完所有特征时返回出现次数最多的
+    if len(dataset[0]) == 1:
+        return majority(classes)
+
+    best_feature_index = choose_best_feature_index(dataset)
+    best_feature_label = labels[best_feature_index]
+
+    sub_labels = labels[:]
+    del(sub_labels[best_feature_index])
+
+    tree = {best_feature_label: {}}
+
+    unique_feature_values = {data[best_feature_index] for data in dataset}
+    for feature_value in unique_feature_values:
+        sub_dataset = split_dataset(dataset, best_feature_index, feature_value)
+        tree[best_feature_label][feature_value] = create_tree(sub_dataset, sub_labels)
+
+    return tree
+

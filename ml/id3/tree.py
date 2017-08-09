@@ -64,9 +64,7 @@ def draw_tree(ax, data, parent_xy, text, y_offset):
             draw_node(ax, value, node_bbox_props, parent_xy=xy, xy=(draw_tree.x_offset, y_offset))
 
 
-if __name__ == '__main__':
-    tree_data = {'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}, 2: 'no'}}
-
+def draw_tree_figure(tree_data):
     draw_tree.depth_total = get_tree_depth(tree_data)
     draw_tree.leaf_num_total = get_tree_leaf_num(tree_data)
 
