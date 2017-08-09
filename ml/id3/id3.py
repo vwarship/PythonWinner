@@ -3,6 +3,17 @@ import operator
 import pickle
 
 
+def classify(tree, labels, vecs):
+    key = list(tree.keys())[0]
+    label_index = labels.index(key)
+    label_value = vecs[label_index]
+    sub_tree = tree[key][label_value]
+    if isinstance(sub_tree, dict):
+        return classify(sub_tree, labels, vecs)
+    else:
+        return sub_tree
+
+
 def calc_shannon_entropy(dataset):
     """计算香农熵
     熵超高，则混合的数据也越多.
@@ -70,6 +81,7 @@ def choose_best_feature_index(dataset):
 
 
 def majority(classes):
+    """获得出现次数最多的项"""
     class_count = {}
     for c in classes:
         class_count.setdefault(c, 0)
