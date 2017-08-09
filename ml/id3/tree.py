@@ -9,11 +9,12 @@ node_bbox_props = dict(boxstyle='Circle', fc='0.8')
 
 def get_tree_depth(data):
     max_depth = 0
-    for key, value in data.items():
+    key = list(data.keys())[0]
+    for key, value in data[key].items():
         if isinstance(value, dict):
             cur_depth = 1 + get_tree_depth(value)
         else:
-            return 1
+            cur_depth = 1
 
         max_depth = max(max_depth, cur_depth)
 
@@ -67,6 +68,7 @@ def draw_tree(ax, data, parent_xy, text, y_offset):
 def draw_tree_figure(tree_data):
     draw_tree.depth_total = get_tree_depth(tree_data)
     draw_tree.leaf_num_total = get_tree_leaf_num(tree_data)
+    print(draw_tree.depth_total, draw_tree.leaf_num_total)
 
     # x需要递增，所以要声明为全局变量
     draw_tree.x_offset = -0.5/draw_tree.leaf_num_total

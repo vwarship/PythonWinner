@@ -54,7 +54,7 @@ def choose_best_feature_index(dataset):
 
     for i in range(feature_num):
         new_entropy = 0.0
-        unique_feature_values = {value for value in dataset[i]}
+        unique_feature_values = {data[i] for data in dataset}
         for feature_value in unique_feature_values:
             sub_dataset = split_dataset(dataset, i, feature_value)
             prob = len(sub_dataset) / len(dataset)
