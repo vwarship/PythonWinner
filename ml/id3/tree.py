@@ -43,7 +43,7 @@ def draw_node(ax, text, bbox_props, parent_xy, xy):
 def draw_mid_text(ax, parent_xy, xy, text):
     mid_x = (parent_xy[0] - xy[0]) / 2 + xy[0]
     mid_y = (parent_xy[1] - xy[1]) / 2 + xy[1]
-    ax.text(mid_x, mid_y, text)
+    ax.text(mid_x, mid_y, text, fontproperties=font_zh)
 
 
 def draw_tree(ax, data, parent_xy, text, y_offset):
@@ -68,7 +68,6 @@ def draw_tree(ax, data, parent_xy, text, y_offset):
 def draw_tree_figure(tree_data):
     draw_tree.depth_total = get_tree_depth(tree_data)
     draw_tree.leaf_num_total = get_tree_leaf_num(tree_data)
-    print(draw_tree.depth_total, draw_tree.leaf_num_total)
 
     # x需要递增，所以要声明为全局变量
     draw_tree.x_offset = -0.5/draw_tree.leaf_num_total
