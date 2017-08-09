@@ -9,11 +9,12 @@ node_bbox_props = dict(boxstyle='Circle', fc='0.8')
 
 def get_tree_depth(data):
     max_depth = 0
-    for key, value in data.items():
+    key = list(data.keys())[0]
+    for key, value in data[key].items():
         if isinstance(value, dict):
             cur_depth = 1 + get_tree_depth(value)
         else:
-            return 1
+            cur_depth = 1
 
         max_depth = max(max_depth, cur_depth)
 
