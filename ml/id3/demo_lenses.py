@@ -1,5 +1,5 @@
 from ml.id3.id3 import create_tree
-from ml.id3.tree import draw_tree_figure
+from ml.id3.draw_tree import draw_tree_figure
 
 
 """预测患者需要佩戴的隐形眼镜类型"""

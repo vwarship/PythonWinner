@@ -1,5 +1,6 @@
 from math import log
 import operator
+import pickle
 
 
 def calc_shannon_entropy(dataset):
@@ -104,3 +105,12 @@ def create_tree(dataset, labels):
 
     return tree
 
+
+def save_tree(tree, filename):
+    with open(filename, 'wb') as f:
+        pickle.dump(tree, f)
+
+
+def read_tree(filename):
+    with open(filename, 'rb') as f:
+        return pickle.load(f)
